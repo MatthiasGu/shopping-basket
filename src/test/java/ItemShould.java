@@ -6,6 +6,6 @@ public class ItemShould {
     @Test
     public void beAbleToCreateSoup() {
         Item soup = new Soup();
-        Assert.assertEquals("soup", soup.getName());
+        Assert.assertEquals(ItemName.SOUP, soup.getName());
     }
 }

@@ -1,12 +1,12 @@
 public abstract class Item {
 
-    private String name;
+    private ItemName name;
 
-    public Item(String name) {
+    public Item(ItemName name) {
         this.name = name;
     }
 
-    public String getName() {
+    public ItemName getName() {
         return name;
     }
 }
