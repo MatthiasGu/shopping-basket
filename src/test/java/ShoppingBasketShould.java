@@ -44,5 +44,14 @@ public class ShoppingBasketShould {
         Assert.assertEquals(2, (int) basket.getItems().get(soup));
     }
 
+    @Test
+    public void returnCorrectSubtotal() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Item soup = new Soup();
+        Item milk = new Milk();
+        basket.addItem(soup,2);
+        basket.addItem(milk, 1);
+        Assert.assertEquals(2.60, basket.getSubtotal(), 0.0);
+    }
 }
 

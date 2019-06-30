@@ -32,4 +32,12 @@ public class ShoppingBasket {
     public Map<Item, Integer> getItems() {
         return items;
     }
+
+    public double getSubtotal() {
+        double subtotal = 0;
+        for (Item item : items.keySet()) {
+            subtotal += items.get(item) * item.getPrice();
+        }
+        return subtotal;
+    }
 }
