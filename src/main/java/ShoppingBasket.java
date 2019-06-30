@@ -21,11 +21,11 @@ public class ShoppingBasket {
         return items.size() == 0;
     }
 
-    public void addItem(Item item) {
+    public void addItem(Item item, int quantity) {
         if (items.containsKey(item)) {
-            items.put(item, items.get(item) + 1);
+            items.put(item, items.get(item) + quantity);
         } else {
-            items.put(item, 1);
+            items.put(item, quantity);
         }
     }
 

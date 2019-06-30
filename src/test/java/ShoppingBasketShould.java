@@ -17,18 +17,28 @@ public class ShoppingBasketShould {
     public void beAbleToAddItems() {
         ShoppingBasket basket = new ShoppingBasket();
         Item soup = new Soup();
-        basket.addItem(soup);
+        basket.addItem(soup, 1);
         Assert.assertEquals(1, basket.getItems().size());
         Assert.assertTrue(basket.getItems().keySet().contains(soup));
         Assert.assertEquals(1, (int) basket.getItems().get(soup));
     }
 
     @Test
+    public void beAbleToAddMultipleOfTheSameItemManually() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Item soup = new Soup();
+        basket.addItem(soup, 1);
+        basket.addItem(soup, 1);
+        Assert.assertEquals(1, basket.getItems().size());
+        Assert.assertTrue(basket.getItems().keySet().contains(soup));
+        Assert.assertEquals(2, (int) basket.getItems().get(soup));
+    }
+
+    @Test
     public void beAbleToAddMultipleOfTheSameItem() {
         ShoppingBasket basket = new ShoppingBasket();
         Item soup = new Soup();
-        basket.addItem(soup);
-        basket.addItem(soup);
+        basket.addItem(soup, 2);
         Assert.assertEquals(1, basket.getItems().size());
         Assert.assertTrue(basket.getItems().keySet().contains(soup));
         Assert.assertEquals(2, (int) basket.getItems().get(soup));
