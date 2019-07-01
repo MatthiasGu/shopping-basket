@@ -5,7 +5,7 @@ command line as follows:
 2. In terminal, type `gradle build`
 3. In terminal, type `cd build/classes/java/main`
 4. In terminal, type `java Run PriceBasket` followed by space-separated items, e.g.
- `java Run PriceBasket Apples Bread Milk`.
+ `java Run PriceBasket Apples Bread Milk`
 
  Note that any items other than Apples, Bread, Milk and Soup will be ignored.
  
