@@ -117,7 +117,18 @@ public class ShoppingBasketShould {
         basket.addItem(bread, 2);
         Assert.assertEquals(0.4, basket.applyOffers(), 0.001);
     }
-    
+
+    @Test
+    public void applyMultipleOffersMultipleTimes() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Item soup = new Soup();
+        Item bread = new Bread();
+        Item apples = new Apples();
+        basket.addItem(soup,4);
+        basket.addItem(bread, 2);
+        basket.addItem(apples, 5);
+        Assert.assertEquals(1.3, basket.applyOffers(), 0.001);
+    }
 
     @Test
     public void notApplyOffersIfNoQualifiedItemsInTheBasket(){
