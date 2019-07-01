@@ -81,4 +81,12 @@ public class ShoppingBasket {
         }
         return quantity;
     }
+
+    public double getTotal() {
+        double subtotal = getSubtotal();
+        double offers = applyOffers();
+        double total = subtotal - offers;
+        System.out.printf("\nTotal price: \u00A3%.2f\n", total);
+        return total;
+    }
 }

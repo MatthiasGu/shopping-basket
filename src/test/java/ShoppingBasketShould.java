@@ -137,5 +137,31 @@ public class ShoppingBasketShould {
         basket.addItem(soup, 5);
         Assert.assertEquals(0, basket.applyOffers(), 0.001);
     }
+
+    @Test
+    public void haveTotalOfZeroIfBasketIsEmpty() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Assert.assertEquals(0, basket.getTotal(), 0.001);
+    }
+
+    @Test
+    public void haveTotalEqualToSubtotalIfNoQualifiedOffers() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Item milk = new Milk();
+        basket.addItem(milk, 5);
+        Assert.assertEquals(basket.getSubtotal(), basket.getTotal(), 0.001);
+    }
+
+    @Test
+    public void applyOffersToSubtotal() {
+        ShoppingBasket basket = new ShoppingBasket();
+        Item soup = new Soup();
+        Item bread = new Bread();
+        Item apples = new Apples();
+        basket.addItem(soup,4);
+        basket.addItem(bread, 2);
+        basket.addItem(apples, 5);
+        Assert.assertEquals(7.90, basket.getTotal(), 0.001);
+    }
 }
 
