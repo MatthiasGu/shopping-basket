@@ -50,6 +50,9 @@ public class ShoppingBasket {
         for (Item item : items.keySet()) {
             offerTotal += checkOffers(item);
         }
+        if (offerTotal == 0) {
+            System.out.println("No offers available.");
+        }
         return offerTotal;
     }
 

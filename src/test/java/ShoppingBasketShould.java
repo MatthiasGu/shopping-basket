@@ -70,5 +70,13 @@ public class ShoppingBasketShould {
         basket.addItem(apples, 5);
         Assert.assertEquals(0.5, basket.applyOffers(), 0.0);
     }
+
+    @Test
+    public void shouldNotApplyOffersIfNoQualifiedItemsInTheBasket(){
+        ShoppingBasket basket = new ShoppingBasket();
+        Item soup = new Soup();
+        basket.addItem(soup, 5);
+        Assert.assertEquals(0, basket.applyOffers(), 0.0);
+    }
 }
 
