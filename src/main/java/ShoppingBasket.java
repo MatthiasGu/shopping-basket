@@ -38,6 +38,7 @@ public class ShoppingBasket {
         for (Item item : items.keySet()) {
             subtotal += items.get(item) * item.getPrice();
         }
+        System.out.printf("\nSubtotal: \u00A3%.2f\n", subtotal);
         return subtotal;
     }
 }
