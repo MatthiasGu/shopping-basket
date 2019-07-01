@@ -1,6 +1,5 @@
 package model;
 
-import model.ItemName;
 import repository.PriceRepository;
 
 public abstract class Item {

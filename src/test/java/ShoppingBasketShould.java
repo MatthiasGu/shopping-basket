@@ -1,4 +1,5 @@
 
+import model.Apples;
 import model.Item;
 import model.Milk;
 import model.Soup;
@@ -52,6 +53,14 @@ public class ShoppingBasketShould {
         basket.addItem(soup,2);
         basket.addItem(milk, 1);
         Assert.assertEquals(2.60, basket.getSubtotal(), 0.0);
+    }
+
+    @Test
+    public void shouldCorrectlyApply10PercentOffForApples(){
+        ShoppingBasket basket = new ShoppingBasket();
+        Item apples = new Apples();
+        basket.addItem(apples, 1);
+        Assert.assertEquals(-0.1, basket.applyOffers(), 0.0);
     }
 }
 
