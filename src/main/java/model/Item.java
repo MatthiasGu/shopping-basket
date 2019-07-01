@@ -2,13 +2,17 @@ package model;
 
 import repository.PriceRepository;
 
+// Previously I had separate classes for each item, but it proved to be unnecessary.
 public enum Item {
     SOUP("Soup"),
     BREAD("Bread"),
     MILK("Milk"),
-    APPLES("Apples");
+    APPLES("Apples"),
+    NOT_FOR_SALE("Not for sale");
 
     private String name;
+
+    // This is a replacement for a DB repository object that would query DB for prices.
     private static PriceRepository priceRepository = new PriceRepository();
 
     Item(String name) {
@@ -25,7 +29,7 @@ public enum Item {
                 return item;
             }
         }
-        return null;
+        return NOT_FOR_SALE;
     }
 
     public static double getPrice(Item item) {

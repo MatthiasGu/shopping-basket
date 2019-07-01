@@ -13,6 +13,7 @@ public class PriceRepository {
         put(BREAD, 0.8);
         put(MILK, 1.30);
         put(APPLES, 1.00);
+        put(NOT_FOR_SALE, 0.00);
     }};
 
     public PriceRepository() {
