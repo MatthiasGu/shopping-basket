@@ -1,6 +1,4 @@
-import model.Item;
-import model.ItemName;
-import model.Offer;
+import model.*;
 import repository.OfferRepository;
 
 import java.util.*;
@@ -31,6 +29,26 @@ public class ShoppingBasket {
             items.put(item, quantity);
         }
     }
+
+    public void addItemByName(ItemName itemName) {
+        Item item;
+        switch(itemName) {
+            case MILK:
+                item = new Milk();
+                break;
+            case SOUP:
+                item = new Soup();
+                break;
+            case BREAD:
+                item = new Bread();
+                break;
+            default:
+                item = new Apples();
+                break;
+        }
+        addItem(item, 1);
+    }
+
 
     public Map<Item, Integer> getItems() {
         return items;
@@ -66,8 +84,10 @@ public class ShoppingBasket {
             int numberOfQualifiedOffers = getQuantityByName(requiredItem) / offer.getRequiredQuantity();
             int timesToApply = Math.min(numberOfQualifiedOffers, numberOfItemsInBasket);
             itemTotal += offer.getOfferAmount() * timesToApply * item.getPrice();
-            System.out.print("\n"+ offer.toString());
-            System.out.printf(" -\u00A3%.2f\n", itemTotal);
+            if (itemTotal > 0) {
+                System.out.print("\n" + offer.toString());
+                System.out.printf(" -\u00A3%.2f\n", itemTotal);
+            }
         }
         return itemTotal;
     }

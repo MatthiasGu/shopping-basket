@@ -15,4 +15,13 @@ public enum ItemName {
     public String getValue() {
         return value;
     }
+
+    public static ItemName fromString(String text) {
+        for (ItemName itemName : ItemName.values()) {
+            if (itemName.value.equalsIgnoreCase(text)) {
+                return itemName;
+            }
+        }
+        return null;
+    }
 }
