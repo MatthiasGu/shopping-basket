@@ -1,5 +1,7 @@
 package model;
 
+import java.text.DecimalFormat;
+
 public class Offer {
 
     private ItemName requiredItem;
@@ -28,5 +30,11 @@ public class Offer {
 
     public double getOfferAmount() {
         return offerAmount;
+    }
+
+    public String toString() {
+        DecimalFormat format = new DecimalFormat();
+        format.setDecimalSeparatorAlwaysShown(false);
+        return offerItem.getValue() + " " + format.format((offerAmount * 100)) + "%" + " off:";
     }
 }

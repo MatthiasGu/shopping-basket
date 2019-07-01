@@ -8,7 +8,7 @@ import java.util.*;
 public class ShoppingBasket {
 
     private Map<Item, Integer> items;
-    
+
     // This is a replacement for a DB repository object that would query DB for offers.
     private OfferRepository offersRepository = new OfferRepository();
 
@@ -62,7 +62,9 @@ public class ShoppingBasket {
             ItemName requiredItem = offer.getRequiredItem();
             int numberOfQualifiedOffers = getQuantityByName(requiredItem) / offer.getRequiredQuantity();
             int timesToApply = Math.min(numberOfQualifiedOffers, numberOfItemsInBasket);
-            itemTotal += offer.getOfferAmount() * timesToApply;
+            itemTotal += offer.getOfferAmount() * timesToApply * item.getPrice();
+            System.out.print("\n"+ offer.toString());
+            System.out.printf(" -\u00A3%.2f\n", itemTotal);
         }
         return itemTotal;
     }

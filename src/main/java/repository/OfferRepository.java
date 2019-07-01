@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OfferRepository {
     private List<Offer> offers = new ArrayList<Offer>() {{
-        add(new Offer(ItemName.APPLES, 1,ItemName.APPLES, -0.1));
+        add(new Offer(ItemName.APPLES, 1, ItemName.APPLES, 0.1));
     }};
 
     public OfferRepository() {

@@ -60,7 +60,15 @@ public class ShoppingBasketShould {
         ShoppingBasket basket = new ShoppingBasket();
         Item apples = new Apples();
         basket.addItem(apples, 1);
-        Assert.assertEquals(-0.1, basket.applyOffers(), 0.0);
+        Assert.assertEquals(0.1, basket.applyOffers(), 0.0);
+    }
+
+    @Test
+    public void shouldCorrectlyApply10PercentOffForMultipleApples(){
+        ShoppingBasket basket = new ShoppingBasket();
+        Item apples = new Apples();
+        basket.addItem(apples, 5);
+        Assert.assertEquals(0.5, basket.applyOffers(), 0.0);
     }
 }
 
