@@ -4,19 +4,19 @@ import java.text.DecimalFormat;
 
 public class Offer {
 
-    private ItemName requiredItem;
+    private Item requiredItem;
     private int requiredQuantity;
-    private ItemName offerItem;
+    private Item offerItem;
     private double offerAmount;
 
-    public Offer(ItemName requiredItem, int requiredQuantity, ItemName offerItem, double offerAmount) {
+    public Offer(Item requiredItem, int requiredQuantity, Item offerItem, double offerAmount) {
         this.requiredItem = requiredItem;
         this.requiredQuantity = requiredQuantity;
         this.offerItem = offerItem;
         this.offerAmount = offerAmount;
     }
 
-    public ItemName getRequiredItem() {
+    public Item getRequiredItem() {
         return requiredItem;
     }
 
@@ -24,7 +24,7 @@ public class Offer {
         return requiredQuantity;
     }
 
-    public ItemName getOfferItem() {
+    public Item getOfferItem() {
         return offerItem;
     }
 
@@ -35,6 +35,6 @@ public class Offer {
     public String toString() {
         DecimalFormat format = new DecimalFormat();
         format.setDecimalSeparatorAlwaysShown(false);
-        return offerItem.getValue() + " " + format.format((offerAmount * 100)) + "%" + " off:";
+        return offerItem.getName() + " " + format.format((offerAmount * 100)) + "%" + " off:";
     }
 }

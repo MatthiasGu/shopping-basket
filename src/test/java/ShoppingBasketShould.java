@@ -14,7 +14,7 @@ public class ShoppingBasketShould {
     @Test
     public void beAbleToAddItems() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
+        Item soup = Item.SOUP;
         basket.addItem(soup, 1);
         Assert.assertEquals(1, basket.getItems().size());
         Assert.assertTrue(basket.getItems().keySet().contains(soup));
@@ -24,7 +24,7 @@ public class ShoppingBasketShould {
     @Test
     public void beAbleToAddMultipleOfTheSameItemManually() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
+        Item soup = Item.SOUP;
         basket.addItem(soup, 1);
         basket.addItem(soup, 1);
         Assert.assertEquals(1, basket.getItems().size());
@@ -35,7 +35,7 @@ public class ShoppingBasketShould {
     @Test
     public void beAbleToAddMultipleOfTheSameItem() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
+        Item soup = Item.SOUP;
         basket.addItem(soup, 2);
         Assert.assertEquals(1, basket.getItems().size());
         Assert.assertTrue(basket.getItems().keySet().contains(soup));
@@ -45,8 +45,8 @@ public class ShoppingBasketShould {
     @Test
     public void returnCorrectSubtotal() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item milk = new Milk();
+        Item soup = Item.SOUP;
+        Item milk = Item.MILK;
         basket.addItem(soup,2);
         basket.addItem(milk, 1);
         Assert.assertEquals(2.60, basket.getSubtotal(), 0.001);
@@ -55,7 +55,7 @@ public class ShoppingBasketShould {
     @Test
     public void correctlyApply10PercentOffForApples(){
         ShoppingBasket basket = new ShoppingBasket();
-        Item apples = new Apples();
+        Item apples = Item.APPLES;
         basket.addItem(apples, 1);
         Assert.assertEquals(0.1, basket.applyOffers(), 0.001);
     }
@@ -63,7 +63,7 @@ public class ShoppingBasketShould {
     @Test
     public void correctlyApply10PercentOffForMultipleApples(){
         ShoppingBasket basket = new ShoppingBasket();
-        Item apples = new Apples();
+        Item apples = Item.APPLES;
         basket.addItem(apples, 5);
         Assert.assertEquals(0.5, basket.applyOffers(), 0.001);
     }
@@ -71,8 +71,8 @@ public class ShoppingBasketShould {
     @Test
     public void correctlyApply50PercentOffForBread() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
         basket.addItem(soup, 2);
         basket.addItem(bread, 1);
         Assert.assertEquals(0.4, basket.applyOffers(), 0.001);
@@ -81,8 +81,8 @@ public class ShoppingBasketShould {
     @Test
     public void correctlyApply50PercentOffForMultipleBreads() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
         basket.addItem(soup, 6);
         basket.addItem(bread, 3);
         Assert.assertEquals(1.2, basket.applyOffers(), 0.001);
@@ -91,8 +91,8 @@ public class ShoppingBasketShould {
     @Test
     public void onlyApply50PercentOffTwiceIfThereAreTwoBreadsAndTenSoups() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
         basket.addItem(soup,10);
         basket.addItem(bread, 2);
         Assert.assertEquals(0.8, basket.applyOffers(), 0.001);
@@ -101,8 +101,8 @@ public class ShoppingBasketShould {
     @Test
     public void onlyApply50PercentOffTwiceIfThereAreFiveBreadsAndFourSoups() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
         basket.addItem(soup,4);
         basket.addItem(bread, 5);
         Assert.assertEquals(0.8, basket.applyOffers(), 0.001);
@@ -111,8 +111,8 @@ public class ShoppingBasketShould {
     @Test
     public void onlyApply50PercentOffOnceIfThereAreTwoBreadsAndThreeSoups() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
         basket.addItem(soup,3);
         basket.addItem(bread, 2);
         Assert.assertEquals(0.4, basket.applyOffers(), 0.001);
@@ -121,9 +121,9 @@ public class ShoppingBasketShould {
     @Test
     public void applyMultipleOffersMultipleTimes() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
-        Item apples = new Apples();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
+        Item apples = Item.APPLES;
         basket.addItem(soup,4);
         basket.addItem(bread, 2);
         basket.addItem(apples, 5);
@@ -133,7 +133,7 @@ public class ShoppingBasketShould {
     @Test
     public void notApplyOffersIfNoQualifiedItemsInTheBasket(){
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
+        Item soup = Item.SOUP;
         basket.addItem(soup, 5);
         Assert.assertEquals(0, basket.applyOffers(), 0.001);
     }
@@ -147,7 +147,7 @@ public class ShoppingBasketShould {
     @Test
     public void haveTotalEqualToSubtotalIfNoQualifiedOffers() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item milk = new Milk();
+        Item milk = Item.MILK;
         basket.addItem(milk, 5);
         Assert.assertEquals(basket.getSubtotal(), basket.getTotal(), 0.001);
     }
@@ -155,9 +155,9 @@ public class ShoppingBasketShould {
     @Test
     public void applyOffersToSubtotal() {
         ShoppingBasket basket = new ShoppingBasket();
-        Item soup = new Soup();
-        Item bread = new Bread();
-        Item apples = new Apples();
+        Item soup = Item.SOUP;
+        Item bread = Item.BREAD;
+        Item apples = Item.APPLES;
         basket.addItem(soup,4);
         basket.addItem(bread, 2);
         basket.addItem(apples, 5);

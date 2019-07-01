@@ -30,26 +30,6 @@ public class ShoppingBasket {
         }
     }
 
-    public void addItemByName(ItemName itemName) {
-        Item item;
-        switch(itemName) {
-            case MILK:
-                item = new Milk();
-                break;
-            case SOUP:
-                item = new Soup();
-                break;
-            case BREAD:
-                item = new Bread();
-                break;
-            default:
-                item = new Apples();
-                break;
-        }
-        addItem(item, 1);
-    }
-
-
     public Map<Item, Integer> getItems() {
         return items;
     }
@@ -57,7 +37,7 @@ public class ShoppingBasket {
     public double getSubtotal() {
         double subtotal = 0;
         for (Item item : items.keySet()) {
-            subtotal += items.get(item) * item.getPrice();
+            subtotal += items.get(item) * Item.getPrice(item);
         }
         System.out.printf("\nSubtotal: \u00A3%.2f\n", subtotal);
         return subtotal;
@@ -76,14 +56,13 @@ public class ShoppingBasket {
 
     private double checkOffers(Item item) {
         double itemTotal = 0.0;
-        ItemName itemName = item.getName();
-        List<Offer> offersForItem = offersRepository.getOffersByItemName(itemName);
+        List<Offer> offersForItem = offersRepository.getOffersForItem(item);
         int numberOfItemsInBasket = items.get(item);
         for (Offer offer : offersForItem) {
-            ItemName requiredItem = offer.getRequiredItem();
-            int numberOfQualifiedOffers = getQuantityByName(requiredItem) / offer.getRequiredQuantity();
+            Item requiredItem = offer.getRequiredItem();
+            int numberOfQualifiedOffers = getQuantity(requiredItem) / offer.getRequiredQuantity();
             int timesToApply = Math.min(numberOfQualifiedOffers, numberOfItemsInBasket);
-            itemTotal += offer.getOfferAmount() * timesToApply * item.getPrice();
+            itemTotal += offer.getOfferAmount() * timesToApply * Item.getPrice(item);
             if (itemTotal > 0) {
                 System.out.print("\n" + offer.toString());
                 System.out.printf(" -\u00A3%.2f\n", itemTotal);
@@ -92,14 +71,8 @@ public class ShoppingBasket {
         return itemTotal;
     }
 
-    private int getQuantityByName(ItemName itemName) {
-        int quantity = 0;
-        for (Item item : items.keySet()) {
-            if (item.getName() == itemName) {
-                quantity += items.get(item);
-            }
-        }
-        return quantity;
+    private int getQuantity(Item item) {
+        return items.getOrDefault(item, 0);
     }
 
     public double getTotal() {

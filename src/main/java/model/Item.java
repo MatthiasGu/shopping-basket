@@ -2,24 +2,34 @@ package model;
 
 import repository.PriceRepository;
 
-public abstract class Item {
+public enum Item {
+    SOUP("Soup"),
+    BREAD("Bread"),
+    MILK("Milk"),
+    APPLES("Apples");
 
-    private ItemName name;
-    private double price;
+    private String name;
+    private static PriceRepository priceRepository = new PriceRepository();
 
-    // This is a replacement for a DB repository object that would query DB for prices.
-    private PriceRepository priceRepository = new PriceRepository();
-
-    public Item(ItemName name) {
+    Item(String name) {
         this.name = name;
-        this.price = priceRepository.getPrice(name);
     }
 
-    public ItemName getName() {
+    public String getName() {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public static Item fromString(String text) {
+        for (Item item : Item.values()) {
+            if (item.name.equalsIgnoreCase(text)) {
+                return item;
+            }
+        }
+        return null;
     }
+
+    public static double getPrice(Item item) {
+        return priceRepository.getPrice(item);
+    }
+
 }

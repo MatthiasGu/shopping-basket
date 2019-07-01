@@ -1,14 +1,14 @@
 package repository;
 
-import model.ItemName;
+import model.Item;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static model.ItemName.*;
+import static model.Item.*;
 
 public class PriceRepository {
-    private Map<ItemName, Double> prices = new HashMap<ItemName, Double>() {{
+    private Map<Item, Double> prices = new HashMap<Item, Double>() {{
         put(SOUP, 0.65);
         put(BREAD, 0.8);
         put(MILK, 1.30);
@@ -19,7 +19,7 @@ public class PriceRepository {
 
     }
 
-    public double getPrice(ItemName name) {
-        return prices.get(name);
+    public double getPrice(Item item) {
+        return prices.get(item);
     }
 }

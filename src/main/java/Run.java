@@ -1,4 +1,4 @@
-import model.ItemName;
+import model.Item;
 
 public class Run {
     public static void main(String[] args) {
@@ -6,8 +6,8 @@ public class Run {
         if (args.length > 1) {
             ShoppingBasket basket = new ShoppingBasket();
             for (int i = 1; i < args.length; i++) {
-                ItemName itemName = ItemName.fromString(args[i]);
-                basket.addItemByName(itemName);
+                Item item = Item.fromString(args[i]);
+                basket.addItem(item, 1);
             }
             basket.getTotal();
         } else {
